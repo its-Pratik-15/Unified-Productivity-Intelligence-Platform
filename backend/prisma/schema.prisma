@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  tasks         Task[]
+  notes         Note[]
+  notifications Notification[]
+  integrations  Integration[]
+  focusSessions FocusSession[]
+}
+
+model Task {
+  id        String   @id @default(uuid())
+  title     String
+  status    String   @default("pending")
+  priority  String   @default("medium")
+  dueDate   DateTime?
+  userId    String
+  parentId  String?
+  createdAt DateTime @default(now())
+
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent   Task?  @relation("TaskHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children Task[] @relation("TaskHierarchy")
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id           String   @id @default(uuid())
+  type         String   // 'task' or 'custom'
+  title        String
+  userId       String
+  subject      String?  // For task-related reminders
+  date         DateTime
+  time         String
+  notifyBefore String   // e.g., '1 day', '2 hours'
+  email        String
+  status       String   @default("active") // 'active', 'sent', 'cancelled'
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Integration {
+  id         String   @id @default(uuid())
+  userId     String
+  provider   String
+  status     String   @default("connected")
+  configJson String   @default("{}")
+  lastSyncAt DateTime?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FocusSession {
+  id        String   @id @default(uuid())
+  userId    String
+  subject   String
+  duration  Int      // in minutes
+  phase     String   // 'work' or 'break'
+  startedAt DateTime
+  endedAt   DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
