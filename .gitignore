@@ -1,0 +1,224 @@
+# ============================================
+# NexaProductivity - Global .gitignore
+# ============================================
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pnp
+.pnp.js
+
+# ============================================
+# Environment Variables & Sensitive Files
+# ============================================
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# Backend environment files
+backend/.env
+backend/.env.local
+backend/.env.development
+backend/.env.development.local
+backend/.env.test
+backend/.env.test.local
+backend/.env.production
+backend/.env.production.local
+
+# Frontend environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development
+frontend/.env.development.local
+frontend/.env.test
+frontend/.env.test.local
+frontend/.env.production
+frontend/.env.production.local
+
+# Allow example environment files
+!*.env.example
+!**/.env.example
+
+# Database credentials
+database.yml
+secrets.yml
+config/database.yml
+config/secrets.yml
+
+# API keys and tokens
+*.key
+*.pem
+*.cert
+*.crt
+*.p12
+*.pfx
+api-keys.json
+credentials.json
+
+# ============================================
+# Build Outputs
+# ============================================
+dist/
+dist-ssr/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+.turbo/
+
+# Frontend build
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# Backend build
+backend/dist/
+backend/build/
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+ngrok.log
+
+# ============================================
+# Database Files
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+.prisma/
+
+# ============================================
+# IDE & Editor Files
+# ============================================
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# OS Files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# Temporary Files
+# ============================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ============================================
+# Testing
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+.coverage
+htmlcov/
+.pytest_cache/
+.jest/
+
+# ============================================
+# Package Manager
+# ============================================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.yarn/
+.pnpm-store/
+
+# ============================================
+# Deployment & CI/CD
+# ============================================
+.vercel
+.netlify
+.firebase/
+.serverless/
+.fusebox/
+
+# ============================================
+# Docker
+# ============================================
+docker-compose.override.yml
+.dockerignore
+
+# ============================================
+# Miscellaneous
+# ============================================
+*.seed
+*.pid
+*.pid.lock
+.npm
+.eslintcache
+.stylelintcache
+.node_repl_history
+.yarn-integrity
+.pnp.*
+
+# Local development
+.local/
+local/
+
+# Backup files
+*.backup
+*~
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
