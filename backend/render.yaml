@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     buildCommand: npm install && npx prisma generate
-    startCommand: npm run dev
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
