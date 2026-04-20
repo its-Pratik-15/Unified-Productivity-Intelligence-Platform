@@ -7,7 +7,7 @@ import {
 import { Card } from '../components/molecules/Card';
 import { Button } from '../components/atoms/Button';
 import { CheckCircle2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const COLORS = {
   Mathematics: 'bg-blue-100 text-blue-700',
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/dashboard/${userId}`);
+      const response = await api.get(`/dashboard/${userId}`);
       if (response.data.success) {
         setDashboardData(response.data.data);
       }
